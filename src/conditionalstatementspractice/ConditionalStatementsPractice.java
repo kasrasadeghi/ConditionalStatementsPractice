@@ -14,8 +14,9 @@ public class ConditionalStatementsPractice {
     public static void main(String[] args) 
     {
         // guardedInfoTable();
-        linearEquationSolver();
-        // quadraticEquationSolver();
+        // linearEquationSolver();
+        // guassianEliminationEquationSolver()
+        quadraticEquationSolver();
     }
     
     public static int inputInteger() 
@@ -88,7 +89,7 @@ public class ConditionalStatementsPractice {
                 + "=====================================================");
         
         for (int j = 0; j<peopleNumber; ++j) {
-            System.out.println( names[j] + t + ages[j] + t + colors[j]);
+            System.out.println( names[j] +t+ ages[j] +t+ colors[j]);
         }
     }
     
@@ -117,7 +118,7 @@ public class ConditionalStatementsPractice {
                 + signD + "%.1f \n\n", A, Math.abs(B), C, Math.abs(D));
         
         if (solution == Double.POSITIVE_INFINITY) 
-            System.out.println( "There are no real solutions.");
+            System.out.println( "There are no solutions.");
         else if (solution == Double.NaN)
             System.out.println( "The solution is all real numbers.");
         else System.out.println("The solution is x = " + solution + ".");
@@ -135,7 +136,41 @@ public class ConditionalStatementsPractice {
     
     public static void quadraticEquationSolver()
     {
+        System.out.println("Enter the coefficients and constants in the equation"
+                + " Ax^2 + Bx + C = 0.");
+        System.out.print("A = ");
+        double A = inputDouble();
+        System.out.print("B = ");
+        double B = inputDouble();
+        System.out.print("C = ");
+        double C = inputDouble();
+        System.out.println();
         
-    }
-    
+        System.out.printf( "Solving equation %.2fx^2 + %.2fx + %.2f = 0.\n\n", A, B, C);
+        
+        double det = B*B - 4*A*C;
+        
+        if (det < 0) {
+            det = Math.abs(det);
+            
+            String realComponent = Double.toString((-B)/(2*A));
+            String unrealComponent = Double.toString(Math.sqrt(det)) + "i";
+            
+            System.out.println( "The solutions are x = " 
+                + realComponent + " + " + unrealComponent + " and x = "
+                + realComponent + " - " + unrealComponent + ".");
+        }
+        else if (det == 0)
+        {
+            double solution = (-B)/(2*A);
+            System.out.println("The solution is " + solution + ".");
+        }
+        else {
+            double upperSolution = (-B + Math.sqrt(det))/(2*A);
+            double lowerSolution = (-B - Math.sqrt(det))/(2*A);
+            
+            System.out.println("The solutions are x = " + upperSolution + " and x = "
+            + lowerSolution + ".");
+        }
+    } 
 }
