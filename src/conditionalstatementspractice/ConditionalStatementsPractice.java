@@ -15,7 +15,6 @@ public class ConditionalStatementsPractice {
     {
         // guardedInfoTable();
         // linearEquationSolver();
-        // guassianEliminationEquationSolver()
         quadraticEquationSolver();
     }
     
@@ -123,15 +122,6 @@ public class ConditionalStatementsPractice {
             System.out.println( "The solution is all real numbers.");
         else System.out.println("The solution is x = " + solution + ".");
         
-    }
-    
-    public static void guassianEliminationEquationSolver()
-    {
-        //TODO: try to make for fun
-        //TODO: actually use linear algebra
-        // format: "5x + 5y = 4x - 3"
-        // ask for more formulas
-        // simplification code
     }
     
     public static void quadraticEquationSolver()
