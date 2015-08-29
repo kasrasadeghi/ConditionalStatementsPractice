@@ -19,6 +19,34 @@ public class ConditionalStatementsPractice {
         // quadraticEquationSolver();
     }
     
+    public static int inputInteger() 
+    {
+        Scanner keyboard = new Scanner( System.in);
+        int output = -1;
+        try {
+            output = keyboard.nextInt();
+        }
+        catch(InputMismatchException exception) {
+            System.out.println( "The input must be an integer.");
+        }
+        if ( output != -1) return output;
+        return inputInteger();     
+    }
+    
+    public static String inputString() 
+    {
+        Scanner keyboard = new Scanner( System.in);
+        String output= null;
+        try {
+            output = keyboard.next();
+        }
+        catch(InputMismatchException exception) {
+            System.out.println( "The input must be a string.");
+        }
+        if( output!= null) return output;
+        return inputString();
+    }
+    
     public static void guardedInfoTable()
     {
         Scanner keyboard = new Scanner( System.in );
@@ -27,41 +55,27 @@ public class ConditionalStatementsPractice {
         int peopleNumber = keyboard.nextInt();
         String[] names = new String[peopleNumber];
         int[] ages = new int[peopleNumber];
-        String[] color = new String[peopleNumber];
+        String[] colors = new String[peopleNumber];
         String[] order = { "first", "second", "third", "fourth", "fifth" };
-        String t = "\t";
+        String t = "\t\t";
         
         for (int i = 0; i <peopleNumber; ++i) {
-            try {
-                System.out.println( "Enter the " + order[i] + " person's name:");
-                names[i] = keyboard.next();
-            } 
-            catch (InputMismatchException exception) {
-                System.out.println( "The name must be a string.");
-            }
             
-            try {
-                System.out.println( "Enter " + names[i] + "'s age:");
-                ages[i] = keyboard.nextInt();
-            } 
-            catch (InputMismatchException exception) {
-                System.out.println( "The age must be an integer.");
-            }
+            System.out.println( "Enter the " + order[i] + " person's name:");
+            names[i] = inputString();
             
-            try {
-                System.out.println( "Enter " + names[i] + "'s favourite color:");
-                color[i] = keyboard.next();
-            } 
-            catch (InputMismatchException exception) {
-                System.out.println( "The color must be a string.");
-            }
+            System.out.println( "Enter " + names[i] + "'s age:");
+            ages[i] = inputInteger();
+            
+            System.out.println( "Enter " + names[i] + "'s favourite color:");
+            colors[i] = inputString();
         }
         
-        System.out.println( "Name\t\tAge\t\tFavorite Color \n"
+        System.out.println( "Name" +t+ "Age" +t+ "Favorite Color \n"
                 + "=====================================================");
         
         for (int j = 0; j<peopleNumber; ++j) {
-            System.out.println( names[j] + t + t + ages[j] + t + t + color[j]);
+            System.out.println( names[j] + t + ages[j] + t + colors[j]);
         }
     }
     
