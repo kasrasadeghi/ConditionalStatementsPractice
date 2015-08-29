@@ -94,11 +94,6 @@ public class ConditionalStatementsPractice {
     
     public static void linearEquationSolver()
     {
-      /*TODO:
-        make basic solution using inputDouble
-        account for special case "no solution"
-        account for special case "all reals"
-        */
         
         System.out.println("Enter the coefficients and constants in the equation"
                 + " Ax + B = Cx + D.");
