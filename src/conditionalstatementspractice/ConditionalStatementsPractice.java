@@ -23,8 +23,7 @@ public class ConditionalStatementsPractice {
             return sc.nextDouble();
         else{
             System.out.println( "You must input a double.");
-            System.exit(0);
-            return Double.NaN;
+            return inputDouble();
         }
     }
     
@@ -35,21 +34,26 @@ public class ConditionalStatementsPractice {
             return sc.next();
         else{
             System.out.println( "You must input a string.");
-            return null;
+            return inputString();
+        }
+    }
+    
+    public static int inputInt()
+    {
+        Scanner sc = new Scanner( System.in);
+        if (sc.hasNextInt())
+            return sc.nextInt();
+        else {
+            System.out.println( "You must input an integer.");
+            return inputInt();
         }
     }
     
     public static void guardedInfoTable()
     {
-        Scanner sc = new Scanner(System.in);
         System.out.println( "Enter number of people:");
         int peopleNumber = 0;
-        if( sc.hasNextInt())
-            peopleNumber = sc.nextInt();
-        else {
-            System.out.println( "You need to input an integer.");
-            return;
-        }
+        peopleNumber = inputInt();
         String[] names = new String[peopleNumber];
         int[] ages = new int[peopleNumber];
         String[] colors = new String[peopleNumber];
@@ -59,25 +63,13 @@ public class ConditionalStatementsPractice {
         for (int i = 0; i <peopleNumber; ++i) {
             
             System.out.println( "Enter the " + order[i] + " person's name:");
-            String temp1 = inputString();
-            if ( temp1 != null)
-                    names[i] = temp1;
-            else return;
+            names[i] = inputString();
             
             System.out.println( "Enter " + names[i] + "'s age:");
-            
-            if( sc.hasNextInt())
-                ages[i] = sc.nextInt();
-            else {
-                System.out.println( "You need to input an integer.");
-                return;
-            }
+            ages[i] = inputInt();
             
             System.out.println( "Enter " + names[i] + "'s favourite color:");
-            String temp2 = inputString();
-            if ( temp2 != null)
-                    colors[i] = temp2;
-            else return;
+            colors[i] = inputString();
         }
         
         System.out.println( "Name" +t+ "Age" +t+ "Favorite Color \n"
