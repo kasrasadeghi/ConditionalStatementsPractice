@@ -15,57 +15,43 @@ public class ConditionalStatementsPractice {
     {
         // guardedInfoTable();
         // linearEquationSolver();
-        quadraticEquationSolver();
+         quadraticEquationSolver();
     }
     
-    public static int inputInteger() 
+    public static double inputDouble()
     {
-        Scanner keyboard = new Scanner( System.in);
-        int output = -1;
-        try {
-            output = keyboard.nextInt();
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextDouble())
+            return sc.nextDouble();
+        else{
+            System.out.println( "You must input a double.");
+            System.exit(0);
+            return Double.NaN;
         }
-        catch(InputMismatchException exception) {
-            System.out.println( "The input must be an integer.");
-        }
-        if ( output != -1) return output;
-        return inputInteger();     
     }
     
-    public static double inputDouble() 
+    public static String inputString()
     {
-        Scanner keyboard = new Scanner( System.in);
-        double output = -1;
-        try {
-            output = keyboard.nextDouble();
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNext())
+            return sc.next();
+        else{
+            System.out.println( "You must input a string.");
+            return null;
         }
-        catch(InputMismatchException exception) {
-            System.out.println( "The input must be an double.");
-        }
-        if ( output != -1) return output;
-        return inputDouble();     
-    }
-    
-    public static String inputString() 
-    {
-        Scanner keyboard = new Scanner( System.in);
-        String output= null;
-        try {
-            output = keyboard.next();
-        }
-        catch(InputMismatchException exception) {
-            System.out.println( "The input must be a string.");
-        }
-        if( output!= null) return output;
-        return inputString();
     }
     
     public static void guardedInfoTable()
     {
-        Scanner keyboard = new Scanner( System.in );
-        
+        Scanner sc = new Scanner(System.in);
         System.out.println( "Enter number of people:");
-        int peopleNumber = keyboard.nextInt();
+        int peopleNumber = 0;
+        if( sc.hasNextInt())
+            peopleNumber = sc.nextInt();
+        else {
+            System.out.println( "You need to input an integer.");
+            return;
+        }
         String[] names = new String[peopleNumber];
         int[] ages = new int[peopleNumber];
         String[] colors = new String[peopleNumber];
@@ -75,13 +61,25 @@ public class ConditionalStatementsPractice {
         for (int i = 0; i <peopleNumber; ++i) {
             
             System.out.println( "Enter the " + order[i] + " person's name:");
-            names[i] = inputString();
+            String temp1 = inputString();
+            if ( temp1 != null)
+                    names[i] = temp1;
+            else return;
             
             System.out.println( "Enter " + names[i] + "'s age:");
-            ages[i] = inputInteger();
+            
+            if( sc.hasNextInt())
+                ages[i] = sc.nextInt();
+            else {
+                System.out.println( "You need to input an integer.");
+                return;
+            }
             
             System.out.println( "Enter " + names[i] + "'s favourite color:");
-            colors[i] = inputString();
+            String temp2 = inputString();
+            if ( temp2 != null)
+                    colors[i] = temp2;
+            else return;
         }
         
         System.out.println( "Name" +t+ "Age" +t+ "Favorite Color \n"
@@ -144,7 +142,7 @@ public class ConditionalStatementsPractice {
             det = Math.abs(det);
             
             String realComponent = Double.toString((-B)/(2*A));
-            String unrealComponent = Double.toString(Math.sqrt(det)) + "i";
+            String unrealComponent = (Math.sqrt(det)/(2*A)) + "i";
             
             System.out.println( "The solutions are x = " 
                 + realComponent + " + " + unrealComponent + " and x = "
