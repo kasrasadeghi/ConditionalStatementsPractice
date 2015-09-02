@@ -22,6 +22,7 @@ public class ConditionalStatementsPractice {
             return sc.nextDouble();
         else{
             System.out.println( "You must input a double.");
+            System.exit(0);
             return inputDouble();
         }
     }
@@ -33,6 +34,7 @@ public class ConditionalStatementsPractice {
             return sc.next();
         else{
             System.out.println( "You must input a string.");
+            System.exit(0);
             return inputString();
         }
     }
@@ -44,6 +46,7 @@ public class ConditionalStatementsPractice {
             return sc.nextInt();
         else {
             System.out.println( "You must input an integer.");
+            System.exit(0);
             return inputInt();
         }
     }
@@ -124,7 +127,13 @@ public class ConditionalStatementsPractice {
         System.out.println();
         
         System.out.printf( "Solving equation %.2fx^2 + %.2fx + %.2f = 0.\n\n", A, B, C);
-        
+        if (A == 0) {
+            double solution = (-C)/B;
+            
+            System.out.println( "This is not a quadratic equation, "
+                    + "but the solution is x = " + solution);
+            return;
+        }
         double det = B*B - 4*A*C;
         
         if (det < 0) {
