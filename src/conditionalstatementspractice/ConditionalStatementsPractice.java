@@ -87,13 +87,13 @@ public class ConditionalStatementsPractice {
         
         System.out.println("Enter the coefficients and constants in the equation"
                 + " Ax + B = Cx + D.");
-        System.out.print("A = ");
+        System.out.println("Please input A:");
         double A = inputDouble();
-        System.out.print("B = ");
+        System.out.println("Please input B:");
         double B = inputDouble();
-        System.out.print("C = ");
+        System.out.println("Please input C:");
         double C = inputDouble();
-        System.out.print("D = ");
+        System.out.println("Please input D:");
         double D = inputDouble();
         System.out.println();
         
@@ -118,18 +118,21 @@ public class ConditionalStatementsPractice {
     {
         System.out.println("Enter the coefficients and constants in the equation"
                 + " Ax^2 + Bx + C = 0.");
-        System.out.print("A = ");
+        System.out.println("Please input A:");
         double A = inputDouble();
-        System.out.print("B = ");
+        System.out.println("Please input B:");
         double B = inputDouble();
-        System.out.print("C = ");
+        System.out.println("Please input C:");
         double C = inputDouble();
-        System.out.println();
         
         System.out.printf( "Solving equation %.2fx^2 + %.2fx + %.2f = 0.\n\n", A, B, C);
         if (A == 0) {
-            double solution = (-C)/B;
+            if (B == 0) {
+                System.out.println( "There are no solutions for this equation.");
+                return;
+            }
             
+            double solution = (-C)/B;
             System.out.println( "This is not a quadratic equation, "
                     + "but the solution is x = " + solution);
             return;
