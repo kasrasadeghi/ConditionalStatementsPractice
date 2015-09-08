@@ -7,21 +7,21 @@ import java.util.Scanner;
 
 public class ConditionalStatementsPractice {
 
+    private static Scanner sc = new Scanner(System.in);
     
     public static void main(String[] args) 
     {
-        // guardedInfoTable();
-         linearEquationSolver();
+         guardedInfoTable();
+        // linearEquationSolver();
         // quadraticEquationSolver();
     }
     
     public static double inputDouble()
     {
-        Scanner sc = new Scanner(System.in);
         if (sc.hasNextDouble())
             return sc.nextDouble();
         else{
-            System.out.println( "You must input a double.");
+            System.out.println( "You need to enter a double.");
             System.exit(0);
             return inputDouble();
         }
@@ -29,11 +29,10 @@ public class ConditionalStatementsPractice {
     
     public static String inputString()
     {
-        Scanner sc = new Scanner(System.in);
         if (sc.hasNext())
             return sc.next();
         else{
-            System.out.println( "You must input a string.");
+            System.out.println( "You need to enter a string.");
             System.exit(0);
             return inputString();
         }
@@ -41,11 +40,10 @@ public class ConditionalStatementsPractice {
     
     public static int inputInt()
     {
-        Scanner sc = new Scanner( System.in);
         if (sc.hasNextInt())
             return sc.nextInt();
         else {
-            System.out.println( "You must input an integer.");
+            System.out.println( "You need to enter an integer.");
             System.exit(0);
             return inputInt();
         }
@@ -53,12 +51,13 @@ public class ConditionalStatementsPractice {
     
     public static void guardedInfoTable()
     {
-        System.out.println( "Enter number of people:");
-        int peopleNumber = inputInt();
+        //System.out.println( "Enter number of people:");
+        int peopleNumber = 3;
         String[] names = new String[peopleNumber];
         int[] ages = new int[peopleNumber];
         String[] colors = new String[peopleNumber];
-        String[] order = { "first", "second", "third", "fourth", "fifth" };
+        String[] order = { "first", "second", "third", "fourth", "fifth", "sixth",
+            "seventh", "eighth", "ninth", "tenth"};
         String t = "\t\t";
         
         for (int i = 0; i <peopleNumber; ++i) {
